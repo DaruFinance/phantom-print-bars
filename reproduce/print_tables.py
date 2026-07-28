@@ -57,8 +57,31 @@ def main():
     print(f"{'uncorrelated subset':>22} {r['N_DEDUP']:>7,} "
           f"{r['RANK_IC_ARM_N']:>8.4f} {r['RANK_IC_ARM_C']:>8.4f} "
           f"{r['RANK_IC_GAP']:>+9.4f} {gb['p']:>8.4g}")
+    fut = json.load(open(os.path.join(HERE, "results_futures.json")))
+    fb = fut["rank_ic_gap_boot"]
+    print(f"{'CME futures (control)':>22} {fut['n_uncorr_strats']:>7,} "
+          f"{fut['rank_ic_naive']:>8.4f} {fut['rank_ic_clean']:>8.4f} "
+          f"{fut['rank_ic_gap']:>+9.4f} {fb['p']:>8.4g}")
     print(f"  cluster bootstrap CI (all): [{cb['ci_lo']:+.4f}, {cb['ci_hi']:+.4f}] "
           f"over {A['n_eff_blocks']} correlation blocks")
+    print()
+
+    prp = json.load(open(os.path.join(HERE, "per_root_phantom.json")))
+    print("Table: futures phantom-affected-bar share by root (2023 RTH)")
+    _rule()
+    for root, v in prp["per_root"].items():
+        print(f"  {root:>4}  {v['n_rth_bars']:>8,} bars   {v['phantom_pct']:>7.3f}%")
+    print(f"  {'all':>4}  {'':>8}        {prp['aggregate']['phantom_pct']:>7.3f}%")
+    print()
+
+    plc = json.load(open(os.path.join(HERE, "placebo.json")))
+    print("Table: placebo three-arm rank-IC (random equal-count drop, dev panel)")
+    _rule()
+    print(f"  naive-IS   {plc['rank_ic_naive']:>7.4f}")
+    print(f"  placebo-IS {plc['rank_ic_placebo']:>7.4f}")
+    print(f"  clean-IS   {plc['rank_ic_clean']:>7.4f}")
+    print("  placebo falls below naive: the fidelity gain is the untradeable prints "
+          "specifically, not merely fewer prints.")
 
 
 if __name__ == "__main__":

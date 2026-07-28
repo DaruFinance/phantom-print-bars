@@ -1,0 +1,114 @@
+{
+  "description": "Placebo specificity control on the eight-name development panel: a random equal-count print drop, three-arm rank-IC (placebo-IS, naive-IS, clean-IS) scored on the executable clean out-of-sample. The random drop behaves worse than naive, so the fidelity gain is specific to the identity of the untradeable prints, not their count.",
+  "panel": "eight-name development panel",
+  "n_strats_before_dedup": 16384,
+  "n_uncorr_strats": 81,
+  "rank_ic_naive": 0.9132565492321588,
+  "rank_ic_placebo": 0.5583730096806835,
+  "rank_ic_clean": 0.9976287262872628,
+  "placebo_recovery_frac_of_clean_gap": -4.206167861707522,
+  "settings": {
+    "tau": 0.5,
+    "is_days": 126,
+    "oos_days": 21,
+    "drop_seed": 231802693
+  },
+  "per_symbol": [
+    {
+      "symbol": "AAPL",
+      "rth_minutes": 227780,
+      "clean_drop_med": 179.0,
+      "placebo_drop_med": 179.0,
+      "drop_count_match_frac": 1.0,
+      "naive_h_ge_placebo_h_frac": 1.0,
+      "placebo_h_ge_clean_h_frac": 0.8867,
+      "mean_naive_minus_clean_H": 0.0412,
+      "mean_placebo_minus_clean_H": 0.03289,
+      "placebo_recovers_pct_of_phantom_H": 20.17
+    },
+    {
+      "symbol": "BAC",
+      "rth_minutes": 27252,
+      "clean_drop_med": 16.0,
+      "placebo_drop_med": 16.0,
+      "drop_count_match_frac": 1.0,
+      "naive_h_ge_placebo_h_frac": 1.0,
+      "placebo_h_ge_clean_h_frac": 0.9301,
+      "mean_naive_minus_clean_H": 0.00688,
+      "mean_placebo_minus_clean_H": 0.00618,
+      "placebo_recovers_pct_of_phantom_H": 10.16
+    },
+    {
+      "symbol": "F",
+      "rth_minutes": 35669,
+      "clean_drop_med": 16.0,
+      "placebo_drop_med": 16.0,
+      "drop_count_match_frac": 1.0,
+      "naive_h_ge_placebo_h_frac": 1.0,
+      "placebo_h_ge_clean_h_frac": 0.9612,
+      "mean_naive_minus_clean_H": 0.00303,
+      "mean_placebo_minus_clean_H": 0.0026,
+      "placebo_recovers_pct_of_phantom_H": 14.35
+    },
+    {
+      "symbol": "NVDA",
+      "rth_minutes": 276855,
+      "clean_drop_med": 400.0,
+      "placebo_drop_med": 400.0,
+      "drop_count_match_frac": 1.0,
+      "naive_h_ge_placebo_h_frac": 1.0,
+      "placebo_h_ge_clean_h_frac": 0.6945,
+      "mean_naive_minus_clean_H": 0.09744,
+      "mean_placebo_minus_clean_H": 0.04316,
+      "placebo_recovers_pct_of_phantom_H": 55.71
+    },
+    {
+      "symbol": "QQQ",
+      "rth_minutes": 171546,
+      "clean_drop_med": 86.0,
+      "placebo_drop_med": 86.0,
+      "drop_count_match_frac": 1.0,
+      "naive_h_ge_placebo_h_frac": 1.0,
+      "placebo_h_ge_clean_h_frac": 0.8032,
+      "mean_naive_minus_clean_H": 0.08008,
+      "mean_placebo_minus_clean_H": 0.06266,
+      "placebo_recovers_pct_of_phantom_H": 21.76
+    },
+    {
+      "symbol": "SPY",
+      "rth_minutes": 87745,
+      "clean_drop_med": 92.0,
+      "placebo_drop_med": 92.0,
+      "drop_count_match_frac": 1.0,
+      "naive_h_ge_placebo_h_frac": 1.0,
+      "placebo_h_ge_clean_h_frac": 0.858,
+      "mean_naive_minus_clean_H": 0.12139,
+      "mean_placebo_minus_clean_H": 0.09867,
+      "placebo_recovers_pct_of_phantom_H": 18.72
+    },
+    {
+      "symbol": "SQQQ",
+      "rth_minutes": 13594,
+      "clean_drop_med": 65.0,
+      "placebo_drop_med": 65.0,
+      "drop_count_match_frac": 1.0,
+      "naive_h_ge_placebo_h_frac": 1.0,
+      "placebo_h_ge_clean_h_frac": 0.7219,
+      "mean_naive_minus_clean_H": 0.00207,
+      "mean_placebo_minus_clean_H": 0.00155,
+      "placebo_recovers_pct_of_phantom_H": 25.08
+    },
+    {
+      "symbol": "TSLA",
+      "rth_minutes": 277131,
+      "clean_drop_med": 907.0,
+      "placebo_drop_med": 907.0,
+      "drop_count_match_frac": 1.0,
+      "naive_h_ge_placebo_h_frac": 1.0,
+      "placebo_h_ge_clean_h_frac": 0.6891,
+      "mean_naive_minus_clean_H": 0.20881,
+      "mean_placebo_minus_clean_H": 0.05726,
+      "placebo_recovers_pct_of_phantom_H": 72.58
+    }
+  ]
+}

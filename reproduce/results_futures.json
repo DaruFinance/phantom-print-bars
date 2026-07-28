@@ -1,0 +1,21 @@
+{
+  "description": "CME futures two-arm negative control (ES/NQ/CL/GC/ZN, 2023). Aggregated selection-fidelity statistics only.",
+  "n_strats_before_dedup": 36160,
+  "n_uncorr_strats": 441,
+  "rank_ic_naive": 0.9771062271062272,
+  "rank_ic_clean": 0.9769937345567598,
+  "rank_ic_gap": -0.00011249254946743559,
+  "rank_ic_gap_boot": {
+    "point": -0.00011249254946743559,
+    "ci_lo": -0.000769991497793554,
+    "ci_hi": 5.573473680797747e-06,
+    "p": 0.076
+  },
+  "arm_n_home_rank_ic": 0.9767365687533754,
+  "settings": {
+    "tau": 0.5,
+    "seed": 12345,
+    "n_boot": 5000,
+    "cluster": "symbol"
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "description": "Classification of futures prints dropped by the clean (aggressor-only) filter on representative 2023 RTH days for CL and GC (most phantom) and ES (control). Dropped prints split by quantity, not by a distinct type label: positive-quantity non-aggressor trades are away-market or negotiated or derived fills (block, EFRP, TAS, implied or spread-leg), not zero-quantity session markers.",
+  "days_sampled": [
+    "20230117",
+    "20230315",
+    "20230515",
+    "20230717",
+    "20230915",
+    "20231115"
+  ],
+  "roots": [
+    "CL",
+    "GC",
+    "ES"
+  ],
+  "dropped_type_counts": {
+    "CL": {
+      "TRADE [qty>0]": 32420,
+      "TRADE [qty=0]": 146
+    },
+    "GC": {
+      "TRADE [qty>0]": 3130,
+      "TRADE [qty=0]": 64
+    },
+    "ES": {
+      "TRADE [qty=0]": 35
+    }
+  },
+  "per_root": {
+    "CL": {
+      "contracts": [
+        "CLG3",
+        "CLJ3",
+        "CLM3",
+        "CLQ3",
+        "CLX3",
+        "CLZ3"
+      ],
+      "n_days": 6,
+      "naive_prints": 348641,
+      "clean_prints": 316075,
+      "dropped_prints": 32566,
+      "DROPPED_BREAKDOWN": {
+        "away_market_nonaggressor_qty_pos": 32420,
+        "session_marker_qty0": 146,
+        "dropped_aggressor_qty0": 0
+      },
+      "DROPPED_SHARES": {
+        "away_market_nonaggressor_qty_pos": 0.9955167966590923,
+        "session_marker_qty0": 0.004483203340907695
+      },
+      "PHANTOM_BARS": {
+        "n_rth_bars": 2340,
+        "n_phantom_bars": 100,
+        "phantom_bar_frac": 0.042735042735042736,
+        "extreme_setter_away_market_qty_pos": 129,
+        "extreme_setter_session_marker_qty0": 0,
+        "extreme_setter_other": 0,
+        "extreme_setter_share_away_market": 1.0
+      }
+    },
+    "GC": {
+      "contracts": [
+        "GCG3",
+        "GCJ3",
+        "GCM3",
+        "GCQ3",
+        "GCZ3"
+      ],
+      "n_days": 6,
+      "naive_prints": 216149,
+      "clean_prints": 212955,
+      "dropped_prints": 3194,
+      "DROPPED_BREAKDOWN": {
+        "away_market_nonaggressor_qty_pos": 3130,
+        "session_marker_qty0": 64,
+        "dropped_aggressor_qty0": 0
+      },
+      "DROPPED_SHARES": {
+        "away_market_nonaggressor_qty_pos": 0.9799624295554165,
+        "session_marker_qty0": 0.020037570444583593
+      },
+      "PHANTOM_BARS": {
+        "n_rth_bars": 2340,
+        "n_phantom_bars": 24,
+        "phantom_bar_frac": 0.010256410256410256,
+        "extreme_setter_away_market_qty_pos": 24,
+        "extreme_setter_session_marker_qty0": 0,
+        "extreme_setter_other": 0,
+        "extreme_setter_share_away_market": 1.0
+      }
+    },
+    "ES": {
+      "contracts": [
+        "ESH3",
+        "ESM3",
+        "ESU3",
+        "ESZ3"
+      ],
+      "n_days": 6,
+      "naive_prints": 1795336,
+      "clean_prints": 1795301,
+      "dropped_prints": 35,
+      "DROPPED_BREAKDOWN": {
+        "away_market_nonaggressor_qty_pos": 0,
+        "session_marker_qty0": 35,
+        "dropped_aggressor_qty0": 0
+      },
+      "DROPPED_SHARES": {
+        "away_market_nonaggressor_qty_pos": 0.0,
+        "session_marker_qty0": 1.0
+      },
+      "PHANTOM_BARS": {
+        "n_rth_bars": 2340,
+        "n_phantom_bars": 0,
+        "phantom_bar_frac": 0.0,
+        "extreme_setter_away_market_qty_pos": 0,
+        "extreme_setter_session_marker_qty0": 0,
+        "extreme_setter_other": 0,
+        "extreme_setter_share_away_market": null
+      }
+    }
+  },
+  "category_defs": {
+    "away_market_nonaggressor_qty_pos": "Type 'TRADE'/'TRADE VOLUME' with Quantity>0: a real trade with NO lit-book aggressor side = block/EFRP/TAS/implied-spread/basis.",
+    "session_marker_qty0": "Type 'TRADE'/'TRADE VOLUME' with Quantity==0: session/summary marker."
+  }
+}

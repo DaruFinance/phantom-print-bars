@@ -1,0 +1,35 @@
+{
+  "description": "Per-root phantom-affected-bar share on CME futures, 2023 RTH. A bar is phantom-affected if its naive high or low differs from the clean (aggressor-only) high or low.",
+  "rth_bars": 486326,
+  "per_root": {
+    "ES": {
+      "n_rth_bars": 97170,
+      "phantom_frac": 0.0,
+      "phantom_pct": 0.0
+    },
+    "NQ": {
+      "n_rth_bars": 97170,
+      "phantom_frac": 0.0001234949058351343,
+      "phantom_pct": 0.0123
+    },
+    "CL": {
+      "n_rth_bars": 97364,
+      "phantom_frac": 0.028121276857976253,
+      "phantom_pct": 2.8121
+    },
+    "GC": {
+      "n_rth_bars": 97362,
+      "phantom_frac": 0.010589346973151743,
+      "phantom_pct": 1.0589
+    },
+    "ZN": {
+      "n_rth_bars": 97260,
+      "phantom_frac": 0.0009356364384125026,
+      "phantom_pct": 0.0936
+    }
+  },
+  "aggregate": {
+    "phantom_frac": 0.007961737599881561,
+    "phantom_pct": 0.7962
+  }
+}
