@@ -43,16 +43,18 @@ python reproduce/make_figures.py       # regenerates figures 2-6 into reproduce/
 Every headline number and every data table in the paper is reproducible from the
 committed `reproduce/results.json` + `reproduce/prevalence_fixed.json`.
 
-## Run the mechanism on synthetic data
+## Smoke test (about 15 seconds, no licensed data)
 
 ```bash
 python examples/run_synthetic.py
 ```
 
 Generates a panel of synthetic symbols with injected phantom prints, builds naive
-and executable bars, and runs the two-arm selection experiment. Selecting on clean
-bars is more faithful to executable out-of-sample performance than selecting on
-naive bars. Magnitudes are fixture-specific, not the paper's numbers.
+and executable bars, and runs the two-arm selection experiment end to end. Selecting
+on clean bars is more faithful to executable out-of-sample performance than selecting
+on naive bars, so the printed fidelity gap is positive: this confirms the core
+mechanism on controlled ground truth. Magnitudes are fixture-specific, not the
+paper's numbers. It runs unchanged from PowerShell.
 
 ## Tests
 
