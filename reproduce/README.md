@@ -28,6 +28,14 @@ python reproduce/make_figures.py       # figures into reproduce/figs/
 | `intrabar.json` | tick-resolved intrabar fill ambiguity, pooled and per stop/target cell | nine symbol-days |
 | `fig_intrabar.json` | per-cell series behind the intrabar figure | nine symbol-days |
 
+## Artifact digests
+
+`MANIFEST.sha256` carries the SHA-256 of every artifact in this directory. Verify with:
+
+```bash
+cd reproduce && sha256sum -c MANIFEST.sha256
+```
+
 ## Figure provenance
 
 | Paper figure | Artifact | Regenerated as |

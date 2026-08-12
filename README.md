@@ -112,7 +112,8 @@ executable price.
 ## Determinism
 
 Seeds are fixed (`SEED = 12345`); the bootstrap replication count is fixed; figure
-and headline outputs are pure functions of the committed artifacts.
+and headline outputs are pure functions of the committed artifacts. Every artifact is
+digest-pinned in `reproduce/MANIFEST.sha256`, verifiable with `sha256sum -c`.
 
 ## Data availability
 
