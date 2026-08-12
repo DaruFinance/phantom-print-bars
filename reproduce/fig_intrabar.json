@@ -1,0 +1,167 @@
+{
+  "kind": "grouped_bar",
+  "title": "Intrabar fill-ambiguity: optimistic vs tick-truth vs pessimistic per-trade net PnL (bp)",
+  "series": [
+    "mean_opt_bp",
+    "mean_tick_bp",
+    "mean_pess_bp"
+  ],
+  "series_labels": [
+    "optimistic (target first)",
+    "tick-truth",
+    "pessimistic (stop first)"
+  ],
+  "cells": [
+    {
+      "cell": "S5_T5",
+      "S": 5,
+      "T": 5,
+      "mean_opt_bp": -6.067464395471582,
+      "mean_tick_bp": -7.07601140401859,
+      "mean_pess_bp": -7.890826218833405,
+      "frac_ambiguous_of_triggered": 0.18244013683010263
+    },
+    {
+      "cell": "S5_T10",
+      "S": 5,
+      "T": 10,
+      "mean_opt_bp": -5.798233626240813,
+      "mean_tick_bp": -6.691396019403205,
+      "mean_pess_bp": -7.007635335642522,
+      "frac_ambiguous_of_triggered": 0.080672748004561
+    },
+    {
+      "cell": "S5_T20",
+      "S": 5,
+      "T": 20,
+      "mean_opt_bp": -5.720272743490488,
+      "mean_tick_bp": -6.247338270556016,
+      "mean_pess_bp": -6.36129838451613,
+      "frac_ambiguous_of_triggered": 0.02585463947141626
+    },
+    {
+      "cell": "S5_T40",
+      "S": 5,
+      "T": 40,
+      "mean_opt_bp": -5.364376235055856,
+      "mean_tick_bp": -5.531042901722523,
+      "mean_pess_bp": -5.556683927363548,
+      "frac_ambiguous_of_triggered": 0.004356665698518733
+    },
+    {
+      "cell": "S10_T5",
+      "S": 10,
+      "T": 5,
+      "mean_opt_bp": -6.730004597014031,
+      "mean_tick_bp": -7.2684661354755695,
+      "mean_pess_bp": -7.994961861971296,
+      "frac_ambiguous_of_triggered": 0.0845231296402056
+    },
+    {
+      "cell": "S10_T10",
+      "S": 10,
+      "T": 10,
+      "mean_opt_bp": -6.237893116726559,
+      "mean_tick_bp": -6.773505652339095,
+      "mean_pess_bp": -7.098291977125419,
+      "frac_ambiguous_of_triggered": 0.04314285714285714
+    },
+    {
+      "cell": "S10_T20",
+      "S": 10,
+      "T": 20,
+      "mean_opt_bp": -6.047424627715822,
+      "mean_tick_bp": -6.329475909767105,
+      "mean_pess_bp": -6.466228046519241,
+      "frac_ambiguous_of_triggered": 0.014361078546307152
+    },
+    {
+      "cell": "S10_T40",
+      "S": 10,
+      "T": 40,
+      "mean_opt_bp": -5.1753670992928855,
+      "mean_tick_bp": -5.2750821990079855,
+      "mean_pess_bp": -5.289327213252999,
+      "frac_ambiguous_of_triggered": 0.002391629297458894
+    },
+    {
+      "cell": "S20_T5",
+      "S": 20,
+      "T": 5,
+      "mean_opt_bp": -6.785788725614116,
+      "mean_tick_bp": -6.906871346696735,
+      "mean_pess_bp": -7.426814366639754,
+      "frac_ambiguous_of_triggered": 0.02586206896551724
+    },
+    {
+      "cell": "S20_T10",
+      "S": 20,
+      "T": 10,
+      "mean_opt_bp": -6.169353229651662,
+      "mean_tick_bp": -6.314652374950807,
+      "mean_pess_bp": -6.571062631361063,
+      "frac_ambiguous_of_triggered": 0.01366279069767442
+    },
+    {
+      "cell": "S20_T20",
+      "S": 20,
+      "T": 20,
+      "mean_opt_bp": -5.528478479248988,
+      "mean_tick_bp": -5.653834604605113,
+      "mean_pess_bp": -5.733606684377193,
+      "frac_ambiguous_of_triggered": 0.0054611650485436895
+    },
+    {
+      "cell": "S20_T40",
+      "S": 20,
+      "T": 40,
+      "mean_opt_bp": -5.120310723153585,
+      "mean_tick_bp": -5.120310723153585,
+      "mean_pess_bp": -5.137404740247602,
+      "frac_ambiguous_of_triggered": 0.00031279324366593683
+    },
+    {
+      "cell": "S40_T5",
+      "S": 40,
+      "T": 5,
+      "mean_opt_bp": -6.8260393128726085,
+      "mean_tick_bp": -6.851680338513634,
+      "mean_pess_bp": -6.9927059795392745,
+      "frac_ambiguous_of_triggered": 0.0037703016241299302
+    },
+    {
+      "cell": "S40_T10",
+      "S": 40,
+      "T": 10,
+      "mean_opt_bp": -5.8060515733706035,
+      "mean_tick_bp": -5.834541601860632,
+      "mean_pess_bp": -5.9057666730857035,
+      "frac_ambiguous_of_triggered": 0.002059429243895263
+    },
+    {
+      "cell": "S40_T20",
+      "S": 40,
+      "T": 20,
+      "mean_opt_bp": -4.948648185450116,
+      "mean_tick_bp": -4.965742202544133,
+      "mean_pess_bp": -4.982836219638151,
+      "frac_ambiguous_of_triggered": 0.000617093489663684
+    },
+    {
+      "cell": "S40_T40",
+      "S": 40,
+      "T": 40,
+      "mean_opt_bp": -2.0481328721320318,
+      "mean_tick_bp": -2.0481328721320318,
+      "mean_pess_bp": -2.0709248949240546,
+      "frac_ambiguous_of_triggered": 0.00032499187520311994
+    }
+  ],
+  "overall": {
+    "mean_opt_bp": -5.648364971406359,
+    "mean_tick_bp": -5.9305052847966735,
+    "mean_pess_bp": -6.155398447189835,
+    "frac_ambiguous_of_triggered": 0.031523481400961735
+  },
+  "note": "If the three bars are nearly identical and frac_ambiguous is small, the intrabar-ordering channel is minor and the paper's headline is driven by the bar-extreme phantom-print effect, not by optimistic intrabar fills."
+}

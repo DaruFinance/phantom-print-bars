@@ -1,8 +1,9 @@
 """Regenerate the paper figures from the committed full-universe artifacts.
 
-Runs for any reader (no licensed tape needed). Reproduces figures 2-6 from the
-small committed JSONs in this directory. fig1 (the phantom-candle schematic) and
-the tick-resolved intrabar figure are not data-driven / not reproduced here.
+Runs for any reader (no licensed tape needed). Reproduces every data-driven figure
+in the paper from the small committed JSONs in this directory. The phantom-candle
+schematic is drawn by hand and is not reproduced here. See README.md in this
+directory for the figure-to-artifact map.
 Determinism: no randomness; output is a pure function of the committed JSONs.
 """
 import json
@@ -111,10 +112,39 @@ def fig6(pv):
     fig.savefig(os.path.join(FIGS, "fig6_decomposition.png"), bbox_inches="tight")
 
 
+def fig7(ib, fib):
+    ov = ib["OVERALL"]
+    fig, (axl, axr) = plt.subplots(1, 2, figsize=(10.4, 4.2))
+
+    vals = [ov["mean_opt_bp"], ov["mean_tick_bp"], ov["mean_pess_bp"]]
+    axl.bar(range(3), vals, color=[C_A, C_C, C_N], width=0.6)
+    for i, v in enumerate(vals):
+        axl.text(i, v - 0.28, f"{v:.2f}", ha="center", va="top", fontsize=9)
+    axl.set_xticks(range(3))
+    axl.set_xticklabels(["optimistic", "tick truth", "pessimistic"])
+    axl.set_ylabel("mean per-trade net PnL (bp)")
+    axl.set_ylim(min(vals) - 1.1, 0)
+    axl.set_title(f"tick truth at {ov['tick_position_in_pess_opt_span']:.2f} of the span")
+
+    cells = fib["cells"]
+    shades = [C_N, "#caa45b", C_A, C_C]
+    for col, s in zip(shades, sorted({c["S"] for c in cells})):
+        row = sorted([c for c in cells if c["S"] == s], key=lambda c: c["T"])
+        axr.plot([c["T"] for c in row], [100 * c["frac_ambiguous_of_triggered"] for c in row],
+                 marker="o", ms=4, lw=1.7, color=col, label=f"stop {s}bp")
+    axr.set_xlabel("target width (bp)")
+    axr.set_ylabel("ambiguous share of triggered trades (%)")
+    axr.set_title(f"ambiguity is rare overall ({100 * ov['frac_ambiguous_of_triggered']:.2f}%)")
+    axr.legend(fontsize=9)
+    fig.tight_layout()
+    fig.savefig(os.path.join(FIGS, "fig7_intrabar.png"), bbox_inches="tight")
+
+
 def main():
     res, sc, pv, eq = _load("results.json"), _load("fig_scatter.json"), _load("prevalence_fixed.json"), _load("fig3_equity.json")
-    fig2(res, sc); fig3(eq); fig4(pv); fig5(pv); fig6(pv)
-    print(f"wrote 5 figures to {FIGS}/")
+    ib, fib = _load("intrabar.json"), _load("fig_intrabar.json")
+    fig2(res, sc); fig3(eq); fig4(pv); fig5(pv); fig6(pv); fig7(ib, fib)
+    print(f"wrote 6 figures to {FIGS}/")
 
 
 if __name__ == "__main__":

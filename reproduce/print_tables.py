@@ -82,6 +82,20 @@ def main():
     print(f"  clean-IS   {plc['rank_ic_clean']:>7.4f}")
     print("  placebo falls below naive: the fidelity gain is the untradeable prints "
           "specifically, not merely fewer prints.")
+    print()
+
+    ib = json.load(open(os.path.join(HERE, "intrabar.json")))
+    ov = ib["OVERALL"]
+    print("Table: intrabar fill ambiguity, tick-resolved (9 symbol-days, executable ticks)")
+    _rule()
+    print(f"  triggered trades          {ov['n_triggered']:>12,}")
+    print(f"  ambiguous share           {ov['frac_ambiguous_of_triggered']*100:>11.2f}%")
+    print(f"  mean PnL optimistic       {ov['mean_opt_bp']:>11.2f} bp")
+    print(f"  mean PnL tick truth       {ov['mean_tick_bp']:>11.2f} bp")
+    print(f"  mean PnL pessimistic      {ov['mean_pess_bp']:>11.2f} bp")
+    print(f"  optimistic minus pess.    {ov['opt_pess_gap_bp_per_trade']:>11.2f} bp per trade")
+    print(f"  tick truth in that span   {ov['tick_position_in_pess_opt_span']:>11.3f}")
+    print(f"  flip share of ambiguous   {ov['flip_share']*100:>11.1f}%")
 
 
 if __name__ == "__main__":

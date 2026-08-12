@@ -20,8 +20,10 @@ therefore ships:
 * the **method**, source-agnostic and inspectable (`phantombars/`);
 * a **synthetic fixture** so the whole pipeline runs with no licensed data
   (`phantombars/synth.py`, `examples/run_synthetic.py`);
-* the **committed result artifacts** and a script that regenerates the paper's
-  figures and headline for a reader who does not hold the data (`reproduce/`);
+* the **committed result artifacts**, the scripts that regenerate the paper's figures,
+  tables and headline for a reader who does not hold the data, and a results inventory
+  mapping every reported number to the artifact it comes from (`reproduce/`);
+* the **locked analysis plan** and its SHA-256 (`preregistration/`);
 * a **test suite** including a pollute-and-verify no-leak check (`tests/`).
 
 ## Install
@@ -30,18 +32,21 @@ therefore ships:
 pip install -e .          # or: pip install -r requirements.txt
 ```
 
-Python 3.9+; depends only on numpy, pandas, scipy, matplotlib, pytest.
+Python 3.9+; depends only on numpy, pandas, scipy, matplotlib, pyarrow, pytest.
 
 ## Reproduce the paper (no licensed data needed)
 
 ```bash
 python reproduce/print_headline.py     # headline numbers from committed results.json
-python reproduce/print_tables.py       # the paper's data tables (prevalence, decomposition, fidelity)
-python reproduce/make_figures.py       # regenerates figures 2-6 into reproduce/figs/
+python reproduce/print_tables.py       # the paper's data tables (prevalence, decomposition, fidelity, intrabar)
+python reproduce/verify_headline.py    # recomputes the primary endpoint from strategy_metrics.parquet
+python reproduce/make_figures.py       # regenerates every data-driven figure into reproduce/figs/
 ```
 
-Every headline number and every data table in the paper is reproducible from the
-committed `reproduce/results.json` + `reproduce/prevalence_fixed.json`.
+`verify_headline.py` is the reproducibility check behind the primary endpoint: it
+recomputes both arms' rank-IC from the per-strategy table and exits non-zero unless it
+matches the stored result. `reproduce/README.md` is the results inventory and figure
+provenance, one row per reported number.
 
 ## Smoke test (about 15 seconds, no licensed data)
 
@@ -67,6 +72,14 @@ inflation is sign-definite), the source decomposition, the fidelity metrics and
 their determinism, and a **pollute-and-verify** test that injects a look-ahead
 into the walk-forward and confirms it is detected.
 
+## Pre-registration
+
+`preregistration/analysis-plan-locked.md` is the analysis plan as frozen before the
+full-universe run: universe, bar constructions, walk-forward, corpus, the primary
+endpoint, the pre-specified constants and the robustness sweep declared in advance. It
+also lists what was added after the freeze and what was dropped from the plan.
+`preregistration/LOCK_HASHES.md` carries its SHA-256 and the freeze timeline.
+
 ## Layout
 
 ```
@@ -77,7 +90,8 @@ phantombars/
   wfo.py          rolling walk-forward, the two arms (select on naive vs clean; score on clean)
   fidelity.py     rank-IC, greedy de-duplication, effective-N block bootstrap
   synth.py        synthetic print generator (controlled ground truth, no data needed)
-reproduce/        committed result artifacts + figure/headline regeneration
+reproduce/        committed result artifacts, regeneration scripts, results inventory
+preregistration/  locked analysis plan + lock hashes
 tests/            structural, fidelity, and no-leak tests
 examples/         end-to-end synthetic demonstration
 ```
@@ -109,11 +123,11 @@ so it is not included in this repository and cannot be regenerated from this
 repository alone. What is provided instead, so the work is reproducible by a reader
 who does not hold the data:
 
-* **Committed result artifacts** (`reproduce/results.json`,
-  `reproduce/prevalence_fixed.json`, `reproduce/fig_scatter.json`,
-  `reproduce/fig3_equity.json`). Every headline number and every data-driven figure
-  in the paper regenerates from these with `reproduce/print_headline.py` and
-  `reproduce/make_figures.py`. They contain aggregated statistics only, no raw prints.
+* **Committed result artifacts** (`reproduce/`), including a per-strategy metrics table
+  (`strategy_metrics.parquet`, one row per strategy) alongside the result JSONs. Every
+  headline number, data table and data-driven figure in the paper regenerates from these;
+  `reproduce/README.md` maps each one to its artifact. They contain aggregated statistics
+  only, no raw prints.
 * **A synthetic fixture** (`phantombars/synth.py`) that generates a controlled print
   stream with injectable phantom prints, so the full pipeline (bars -> walk-forward
   -> fidelity) runs end to end with no licensed data (`examples/run_synthetic.py`).

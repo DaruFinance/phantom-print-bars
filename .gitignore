@@ -10,6 +10,7 @@ reproduce/figs/
 *.csv
 *.csv.gz
 *.parquet
+!reproduce/strategy_metrics.parquet
 *.npy
 *.pem
 *.key
