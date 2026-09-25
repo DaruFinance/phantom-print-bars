@@ -59,7 +59,7 @@ the paper's figure numbers. The mapping above is the authority.
 | §6 | median 3.4bp, p99 55.8bp range inflation | `prevalence_fixed.json` | `global_stats` |
 | §6, Table 2 | prevalence by year, 2007 to 2026 | `prevalence_fixed.json` | `by_year` |
 | §6 | prevalence and magnitude by price band | `prevalence_fixed.json` | `by_price_bucket` |
-| §7, Table 4, Fig 3 | 76.3 / 18.4 / 4.7 / 0.7 source split | `prevalence_fixed.json` | `decomposition` |
+| §7, Table 4, Fig 3 | 76.3 / 18.4 / 4.6 / 0.7 source split | `prevalence_fixed.json` | `decomposition` |
 | §8, Table 5 | rank-IC 0.9948 and 0.9987, gap +0.0039 | `results.json` | `APPROACH_C` |
 | §8, Table 5 | block bootstrap CI [0.0025, 0.0093], p < 0.001 | `results.json` | `APPROACH_C.gap_cluster_boot` |
 | §8, Table 5 | i.i.d. diagnostic CI [0.0036, 0.0043] | `results.json` | `APPROACH_C.gap_iid7232_boot_DIAGNOSTIC` |
@@ -79,6 +79,7 @@ the paper's figure numbers. The mapping above is the authority.
 | §11 | 0.80% of futures bars phantom-affected, by root | `per_root_phantom.json` | `per_root`, `aggregate` |
 | §11 | away-market prints are 99.6% of drops on CL, 98% on GC | `futures_print_types.json` | `per_root` |
 | §12, Table 8 | placebo 0.558 against naive 0.913 and clean 0.998 | `placebo.json` | `rank_ic_*` |
+| §10, cost-stress | rank-IC gap at 1x/2x/3x/5x cost = +0.0039/+0.0029/+0.0031/+0.0031, all p<0.001 | `cost_stress.json` | `levels` |
 
 ## Numbers not backed by an artifact here
 
@@ -88,6 +89,5 @@ reproducible by a holder of the licensed tape.
 
 * Table 6, the de-duplication sweep over threshold and ranking key.
 * §10, the sub-period rank-IC gap by calendar year.
-* §10, the cost-multiplier stress at 3x and 5x.
 * §10, the round-lot redefinition change of −1.8 percentage points.
 * §6, the bootstrap confidence intervals on prevalence.

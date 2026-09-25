@@ -66,6 +66,17 @@ def main():
           f"over {A['n_eff_blocks']} correlation blocks")
     print()
 
+    cs = json.load(open(os.path.join(HERE, "cost_stress.json")))
+    print("Table: cost-multiplier stress (all-strategy rank-IC gap, both arms scaled)")
+    _rule()
+    print(f"{'cost':>6} {'rank-IC gap':>12} {'95% CI':>24} {'p':>8}")
+    for lv in cs["levels"]:
+        ci = f"[{lv['ci_lo']:+.4f}, {lv['ci_hi']:+.4f}]"
+        print(f"{str(lv['cost_multiplier'])+'x':>6} {lv['rank_ic_gap']:>+12.4f} {ci:>24} {lv['p']:>8}")
+    print("  gap is near-invariant to cost (both arms trade at parity), positive and "
+          "significant through 5x.")
+    print()
+
     prp = json.load(open(os.path.join(HERE, "per_root_phantom.json")))
     print("Table: futures phantom-affected-bar share by root (2023 RTH)")
     _rule()

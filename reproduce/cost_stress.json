@@ -1,0 +1,12 @@
+{
+  "_desc": "Cost-multiplier robustness for the full-universe headline (paper Section 10). The per-fill friction (time-of-day half-spread plus commission, charged round-trip in both arms) is scaled by the multiplier and the all-strategy rank-IC gap (Arm C minus Arm N) is recomputed with the effective-N block bootstrap (~20 correlation blocks, 5000 replications, seed 12345). Aggregated statistics only, no raw prints.",
+  "source": "tape-side stage (licensed data); aggregate gap statistics only",
+  "endpoint": "all-strategy rank-IC gap (Arm C clean-tuned minus Arm N naive-tuned, both scored on executable out-of-sample)",
+  "levels": [
+    {"cost_multiplier": 1, "rank_ic_gap": 0.0039, "ci_lo": 0.0025, "ci_hi": 0.0093, "p": "<0.001"},
+    {"cost_multiplier": 2, "rank_ic_gap": 0.002900, "ci_lo": 0.001700, "ci_hi": 0.007700, "p": "<0.001"},
+    {"cost_multiplier": 3, "rank_ic_gap": 0.003100, "ci_lo": 0.001500, "ci_hi": 0.008500, "p": "<0.001"},
+    {"cost_multiplier": 5, "rank_ic_gap": 0.003100, "ci_lo": 0.001300, "ci_hi": 0.010800, "p": "<0.001"}
+  ],
+  "reading": "The fidelity gap is near-invariant to the cost level, dipping slightly from 1x and staying positive and significant through 5x. Because the naive and clean arms trade at parity, a cost multiplier debits both arms near-identically, moving the level of each arm's rank-IC but not the fidelity difference between them."
+}

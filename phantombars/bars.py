@@ -37,16 +37,19 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
-# Sale-condition bits that make a print INELIGIBLE to set the official high/low/last
-# (the exchanges suppress these from official OHLC; a naive bar reintroduces them).
-COND_ODD_LOT = 1 << 0           # volume-eligible only
-COND_AVG_PRICE = 1 << 1         # ".W" computed average, not a market print
-COND_PRIOR_REF = 1 << 2         # ".P" priced as of an earlier time
-COND_DERIVATIVE = 1 << 3        # VWAP / benchmark formula price
-COND_FORM_T = 1 << 4            # ".T" pre/post market
-COND_OUT_OF_SEQ = 1 << 5        # late / out-of-time-sequence report
-INELIGIBLE_MASK = (COND_AVG_PRICE | COND_PRIOR_REF | COND_DERIVATIVE
-                   | COND_FORM_T | COND_OUT_OF_SEQ)
+# Sale-condition bits. Per the CTA/UTP Sale Condition Matrix, only some conditions are
+# INELIGIBLE to set the official high/low: computed/average prices and extended-hours
+# prints (plus settlement types, not modeled here). Prior-reference (".P"),
+# derivatively/benchmark-priced, and out-of-sequence prints are real trades at real
+# prices and DO update the official high and low (they are only last-sale-ineligible),
+# so they are NOT in the high/low mask below.
+COND_ODD_LOT = 1 << 0           # volume-eligible only (never sets high/low)
+COND_AVG_PRICE = 1 << 1         # ".W" computed average, not a market print (high/low-ineligible)
+COND_PRIOR_REF = 1 << 2         # ".P" priced as of an earlier time (DOES update high/low)
+COND_DERIVATIVE = 1 << 3        # VWAP / benchmark formula price (DOES update high/low)
+COND_FORM_T = 1 << 4            # ".T" pre/post market (high/low-ineligible)
+COND_OUT_OF_SEQ = 1 << 5        # late / out-of-sequence report (DOES update high/low)
+INELIGIBLE_MASK = COND_AVG_PRICE | COND_FORM_T
 
 ODD_LOT_MAX = 100               # a fill under a round lot is an odd lot
 TRF_TAGS = frozenset({"D", "FINRA", "TRF"})

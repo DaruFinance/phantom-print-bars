@@ -152,8 +152,10 @@ supplies the NBBO at print time instead, set `at_nbbo = (bid <= price <= ask)`. 
 must be a print-time quantity so the cleaning stays causal (no look-ahead). The
 official OHLC published by the exchanges is **not** the same object: it drops odd
 lots and condition-coded prints but retains regular-way off-exchange prints that
-printed outside the NBBO. The executable bar here anchors to the NBBO and is strictly
-tighter.
+printed outside the NBBO. The executable bar here anchors to the NBBO, which makes it a distinct object from
+official OHLC, neither a subset nor a superset of it: it keeps the reachable
+inside-NBBO prints official OHLC drops and excludes the out-of-NBBO prints official
+OHLC keeps.
 
 ## Citation
 
